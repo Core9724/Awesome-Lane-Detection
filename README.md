@@ -4,8 +4,6 @@ This repository is used for recording and tracking recent monocular lane detecti
 
 ## Methods of 2D Lane Detection
 
-Depending on the task paradigm, existing 2D lane detection methods can be categorized into **Segmentation-based(Seg)** and **Object detection-based(ODet)** methods. 
-
 **Segmentation-based methods** (two-stage), which complete lane recognition and instance discrimination in a certain order, and leverage mask, grids or keypoints to model lanes.
 
 **Object detection-based methods** (one-stage), which can directly perform instance discrimination and localization concurrently, and leverage line anchor or parameter curve to model lanes.
