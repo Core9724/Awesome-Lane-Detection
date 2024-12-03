@@ -22,18 +22,18 @@ This repository is used for recording and tracking recent monocular lane detecti
 
 ## Summary of Contents
 
-- [Methods of 2D Lane Detection](#Methods of 2D Lane Detection)
-	- [Segmentation-based Methods](#Segmentation-based Methods)
-	- [Object detection-based Methods](#Object detection-based Methods)
-- [Methods of 3D Lane Detection](#Methods of 3D Lane Detection)
-	- [BEV-based Methods](#BEV-based Methods)
-	- [BEV-free Methods](#BEV-free Methods)
-- [Extended Works of Lane Detection](#Extended Works of Lane Detection)
-	- [Multi-task Perception](#Multi-task Perception)
-	- [Video Lane Detection](#Video Lane Detection)
-	- [Online HD Map Construction](#Online HD Map Construction)
-	- [Lane Topology Reasoning](#Lane Topology Reasoning)
-- [Future Direction](#Future Direction)
+- [Methods of 2D Lane Detection](#Methods-of-2D-Lane-Detection)
+	- [Segmentation-based Methods](#Segmentation-based-Methods)
+	- [Object detection-based Methods](#Object-detection-based-Methods)
+- [Methods of 3D Lane Detection](#Methods-of-3D-Lane-Detection)
+	- [BEV-based Methods](#BEV-based-Methods)
+	- [BEV-free Methods](#BEV-free-Methods)
+- [Extended Works of Lane Detection](#Extended-Works-of-Lane-Detection)
+	- [Multi-task Perception](#Multi-task-Perception)
+	- [Video Lane Detection](#Video-Lane-Detection)
+	- [Online HD Map Construction](#Online-HD-Map-Construction)
+	- [Lane Topology Reasoning](#Lane-Topology-Reasoning)
+- [Future Direction](#Future-Direction)
 
 ## Methods of 2D Lane Detection
 
