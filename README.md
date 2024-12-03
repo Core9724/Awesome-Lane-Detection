@@ -1,14 +1,49 @@
 # Awesome-Lane-Detection
 
-This repository is used for recording and tracking recent monocular lane detection methods, as a supplement to our survey paper which is coming soon.
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
+[![arXiv](https://img.shields.io/badge/arXiv-2411.16316-b31b1b.svg)](https://arxiv.org/abs/2411.16316)
+
+![overview](figs/lanedet_pipeline.png)
+
+This repository is used for recording and tracking recent monocular lane detection methods, as a supplement to our [survey paper](https://arxiv.org/abs/2411.16316):
+
+> **Title:** Monocular Lane Detection Based on Deep Learning: A Survey <br>
+> **Authors:** Xin He, Haiyun Guo, Kuan Zhu, Bingke Zhu, Xu Zhao, Jianwu Fang, Jinqiao Wang<br>
+> arXiv preprint arXiv:2206.09474<br>
+
+**This repository will be constantly updated.** If you find any work missing or have any suggestions (papers, implementations and other resources), feel free to [pull requests](https://github.com/Core9724/Awesome-Lane-Detection/pulls). We will add the missing papers to this repo ASAP.
+
+## Overview
+
+
+
+![overview](figs/overview.png)
+
+## Summary of Contents
+
+- [Methods of 2D Lane Detection](#Methods of 2D Lane Detection)
+	- [Segmentation-based Methods](#Segmentation-based Methods)
+	- [Object detection-based Methods](#Object detection-based Methods)
+- [Methods of 3D Lane Detection](#Methods of 3D Lane Detection)
+	- [BEV-based Methods](#BEV-based Methods)
+	- [BEV-free Methods](#BEV-free Methods)
+- [Extended Works of Lane Detection](#Extended Works of Lane Detection)
+	- [Multi-task Perception](#Multi-task Perception)
+	- [Video Lane Detection](#Video Lane Detection)
+	- [Online HD Map Construction](#Online HD Map Construction)
+	- [Lane Topology Reasoning](#Lane Topology Reasoning)
+- [Future Direction](#Future Direction)
 
 ## Methods of 2D Lane Detection
 
-**Segmentation-based methods** (two-stage), which complete lane recognition and instance discrimination in a certain order, and leverage mask, grids or keypoints to model lanes.
+![overview](figs/methods_2d.png)
 
-**Object detection-based methods** (one-stage), which can directly perform instance discrimination and localization concurrently, and leverage line anchor or parameter curve to model lanes.
+**(a)Segmentation-based methods** (two-stage), which complete lane recognition and instance discrimination in a certain order, and leverage mask, grids or keypoints to model lanes.
 
-### Segmentation-based methods
+**(b)Object detection-based methods** (one-stage), which can directly perform instance discrimination and localization concurrently, and leverage line anchor or parameter curve to model lanes.
+
+### Segmentation-based Methods
 
 "↑" represents a bottom-up approach, usually distinguishing all lane foreground first, and then obtaining each lane instance through heuristic post-processing. 
 
@@ -45,7 +80,7 @@ This repository is used for recording and tracking recent monocular lane detecti
 |     **CondLSTR**      |  **ICCV 2023**  | Generating Dynamic Kernels via Transformers for Lane Detection | [Paper](https://openaccess.thecvf.com/content/ICCV2023/html/Chen_Generating_Dynamic_Kernels_via_Transformers_for_Lane_Detection_ICCV_2023_paper.html)/[Code](https://github.com/czyczyyzc/CondLSTR?tab=readme-ov-file#generating-dynamic-kernels-via-transformers-for-lane-detection) |   ↓(Dynamic Kernels)    | **Keypoints** |
 |    **LanePtrNet**     | **Arxiv 2024**  | LanePtrNet: Revisiting Lane Detection as Point Voting and Grouping on Curves |        [Paper](https://arxiv.org/abs/2403.05155)/Code        |            ↑            | **Keypoints** |
 
-### Object Detection-based methods
+### Object Detection-based Methods
 
 |        Methods        |     Venue      | Title                                                        |                          Paper/Code                          |          Lane Modeling          |
 | :-------------------: | :------------: | ------------------------------------------------------------ | :----------------------------------------------------------: | :-----------------------------: |
@@ -73,11 +108,13 @@ This repository is used for recording and tracking recent monocular lane detecti
 
 ## Methods of 3D Lane Detection
 
-According to whether explicit BEV feature are constructed as intermediate proxies, 3D lane detection can be classified as either BEV-based or BEV-free methods.
+![overview](figs/methods_3d.png)
+
+**(a)BEV-based Methods**. The core is the **view transformation** from FV features to BEV features, including IPM and learning approach.
+
+**(b)BEV-free Methods**. There are two branches: one is to project 2D lanes into 3D space based on **depth estimation** results, and the other is to **directly model 3D lanes** and project them back into FV for interaction and alignment.
 
 ### BEV-based Methods
-
-Firstly, the BEV feature are obtained through **View Transformation**, and then **2D Lane Detection** is performed on the BEV plane. Since BEV features inherently conceal height information, the subsequent lane decoding process only needs to consider the 2D BEV plane, which can naturally be integrated with 2D lane detection methods.
 
 |      Methods       |     Venue      | Title                                                        | Paper/Code                                                   |             View Transformation             |      Task Paradigm       |   Lane Modeling    |
 | :----------------: | :------------: | ------------------------------------------------------------ | ------------------------------------------------------------ | :-----------------------------------------: | :----------------------: | :----------------: |
@@ -97,10 +134,6 @@ Firstly, the BEV feature are obtained through **View Transformation**, and then 
 
 ### BEV-free Methods
 
-One approach is to detect 2D lanes in the FV image while predicting their depth, and then projecting them onto the 3D space (2D to 3D Projection).
-
-The other approach is to directly model the 3D lane, then project back to the front view features, and interact the 3D information from camera parameters with the front view features, ultimately refining and updating the 3D lane (3D to 2D Projection).
-
 Although **PVALane** constructs BEV feature, BEV feature are only used to assist in enhancing the 3D lane detection effect, rather than being a necessary component of the network like the BEV-based method.
 
 |     Methods      |     Venue      | Title                                                        | Paper/Code                                                   | Task Paradigm |    Lane Modeling    |
@@ -115,7 +148,9 @@ Although **PVALane** constructs BEV feature, BEV feature are only used to assist
 
 ## Extended Works of Lane Detection
 
-There are also some works that have achieved rich results and received widespread attention in recent years, which are closely related to lane detection. In terms of task flow, they can be regarded as an upgrade in monocular image lane detection.
+There are also some works that have received widespread attention in recent years, which are closely related to lane detection. In terms of task flow, they can be regarded as an upgrade on monocular image lane detection.
+
+![overview](figs/roadmap.png)
 
 ### Multi-task Perception
 
@@ -146,7 +181,7 @@ There are also some works that have achieved rich results and received widesprea
 |     **ST3DLane**      |   **3D**   |  **BMVC 2022**  | Spatio-Temporal Fusion-based Monocular 3D Lane Detection     | [Paper](https://bmvc2022.mpi-inf.mpg.de/314/)/Code           |
 |   **CurveFormre++**   |   **3D**   | **Arxiv 2024**  | CurveFormer++: 3D Lane Detection by Curve Propagation with Temporal Curve Queries and Attention | [Paper](https://arxiv.org/abs/2402.06423)/Code               |
 
-### Online Vectorized HD Map Construction
+### Online HD Map Construction
 
 |     Methods      |       Venue        | Title                                                        | Code                                                         |
 | :--------------: | :----------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -158,7 +193,7 @@ There are also some works that have achieved rich results and received widesprea
 |   **MachMap**    |   **CVPRW 2023**   | MachMap: End-to-End Vectorized Solution for Compact HD-Map Construction | [Paper](https://arxiv.org/abs/2306.10301)/Code               |
 |     **NMP**      |   **CVPR 2023**    | Neural Map Prior for Autonomous Driving                      | [Paper](https://arxiv.org/abs/2304.08481)/[Code](https://github.com/Tsinghua-MARS-Lab/neural_map_prior) |
 |   **BeMapNet**   |   **CVPR 2023**    | End-to-End Vectorized HD-map Construction with Piecewise Bezier Curve | [Paper](https://arxiv.org/abs/2306.09700)/[Code](https://github.com/er-muyue/BeMapNet) |
-|   **PovitNet**   |   **ICCV 2023**    | PivotNet: Vectorized Pivot Learning for End-to-end HD Map Construction | [Paper](https://arxiv.org/abs/2308.16477)/[Code](https://github.com/wenjie710/PivotNet) |
+|   **PivotNet**   |   **ICCV 2023**    | PivotNet: Vectorized Pivot Learning for End-to-end HD Map Construction | [Paper](https://arxiv.org/abs/2308.16477)/[Code](https://github.com/wenjie710/PivotNet) |
 |    **MV-Map**    |   **ICCV 2023**    | MV-Map: Offboard HD-Map Generation with Multi-view Consistency | [Paper](https://arxiv.org/abs/2305.08851)/[Code](https://github.com/ZiYang-xie/MV-Map) |
 |    **MapSeg**    |   **Arxiv 2023**   | MapSeg: Segmentation guided structured model for online HD map construction | [Paper](https://arxiv.org/abs/2311.02503)/Code               |
 |     **NeMO**     |   **Arxiv 2023**   | NeMO: Neural Map Growing System for Spatiotemporal Fusion in Bird's-Eye-View and BDD-Map Benchmark | [Paper](https://arxiv.org/abs/2306.04540)/Code               |
@@ -187,7 +222,7 @@ There are also some works that have achieved rich results and received widesprea
 |   **MapTRv2**    |   **IJCV 2024**    | MapTRv2: An End-to-End Framework for Online Vectorized HD Map Construction | [Paper](https://arxiv.org/abs/2308.05736)/[Code](https://arxiv.org/abs/2208.14437) |
 |   **P-MapNet**   |    **RAL 2024**    | P-MapNet: Far-seeing Map Generator Enhanced by both SDMap and HDMap Priors | [Paper](https://arxiv.org/abs/2403.10521)/[Code](https://github.com/jike5/P-MapNet) |
 
-### Lane Topology
+### Lane Topology Reasoning
 
 |      Methods      |      Venue       | Title                                                        | Paper/Code                                                   |
 | :---------------: | :--------------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
