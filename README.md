@@ -10,7 +10,7 @@ This repository is used for recording and tracking recent monocular lane detecti
 
 > **Title:** Monocular Lane Detection Based on Deep Learning: A Survey <br>
 > **Authors:** Xin He, Haiyun Guo, Kuan Zhu, Bingke Zhu, Xu Zhao, Jianwu Fang, Jinqiao Wang<br>
-> arXiv preprint arXiv:2206.09474<br>
+> arXiv preprint arXiv:2411.16316<br>
 
 **This repository will be constantly updated.** If you find any work missing or have any suggestions (papers, implementations and other resources), feel free to [pull requests](https://github.com/Core9724/Awesome-Lane-Detection/pulls). We will add the missing papers to this repo ASAP.
 
